@@ -15,7 +15,7 @@ def createDataSet():
             [2, 1, 0, 1, 'yes'],
             [2, 1, 0, 2, 'yes'],
             [2, 0, 0, 0, 'no']]
-    labels=['不放贷','放贷']
+    labels=['年龄','有工作','有自己的房子','信贷情况']#特征标签
     return dataSet,labels
 def calcshannonEnt(dataSet):
         numEntries=len(dataSet)
@@ -60,12 +60,11 @@ def chooseBestFeatureToSplit(dataSet):
                         prob=len(subDataSet)/float(len(dataSet)) #计算子集的概率
                         newEntroy+=prob*calcshannonEnt(subDataSet)#根据公式计算经验条件熵
                 infoGain=baseEntropy-newEntroy
-                print("第%d个特征的增益为%.3f"%(i,infoGain))
+                #print("第%d个特征的增益为%.3f"%(i,infoGain))
                 if (infoGain>bestInfoGain): #计算信息增益
                         bestInfoGain=infoGain #更新信息增益，找到最大的信息增益
                         bestFeature=i #记录信息增益最大的特征的索引值
         return bestFeature #返回信息增益最大的特征的索引值
-
 
 
 
